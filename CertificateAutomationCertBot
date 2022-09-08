@@ -1,0 +1,41 @@
+sudo wget -r --no-parent -A 'epel-release-*.rpm' https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/
+
+sudo rpm -Uvh dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-*.rpm
+
+sudo yum-config-manager --enable epel*
+
+sudo yum repolist all
+
+<VirtualHost *:80>
+    DocumentRoot "/var/www/html"
+    ServerName "ownlearning.click"
+    ServerAlias "www.ownlearning.click"
+</VirtualHost>
+
+sudo systemctl restart httpd
+
+_______________________________
+
+Install and run the certbot:
+
+sudo amazon-linux-extras install epel -y
+
+sudo yum install -y certbot python2-certbot-apache
+
+sudo certbot
+
+____________________
+
+How to Configure automatic certificate renewal
+
+Open the /etc/crontab file in a text editor, such as vim or nano, using sudo
+
+Add the below line
+
+39      1,13    *       *       *       root    certbot renew --no-self-upgrade
+
+above command will do the below
+exactly at 01:39 and 13:39 every day . 
+
+sudo systemctl restart crond
+
