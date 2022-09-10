@@ -1,6 +1,7 @@
 wget https://wordpress.org/latest.tar.gz
 tar -xzf latest.tar.gz
 
+sudo systemctl start mariadb
 mysql -u root -p
 CREATE USER 'wordpress-user'@'localhost' IDENTIFIED BY 'P@ssw0rd@123';
 
@@ -31,7 +32,7 @@ mkdir phpMyAdmin && tar -xvzf phpMyAdmin-latest-all-languages.tar.gz -C phpMyAdm
 rm phpMyAdmin-latest-all-languages.tar.gz
 
 ________________________________________
-
+To create and edit the wp-config.php file
 
 
 cp wordpress/wp-config-sample.php wordpress/wp-config.php
@@ -39,13 +40,45 @@ cp wordpress/wp-config-sample.php wordpress/wp-config.php
 sudo vi wordpress/wp-config.php
 
 _____________________________________________
+To install your WordPress files under the Apache document root
 
 cp -r wordpress/* /var/www/html/
 
+______________________________________________
+To allow WordPress to use permalinks
 
 sudo vim /etc/httpd/conf/httpd.conf
 
+Find the section that starts with <Directory "/var/www/html">
+
+AllowOverride None -> AllowOverride All
+
+Save it
 _____________________________________________
+
+To install the PHP graphics drawing library on Amazon Linux 2
+
+sudo yum install php-gd
+
+_____________________________________________
+
+
+To fix file permissions for the Apache web server
+
+Grant file ownership of /var/www and its contents to the apache user.
+sudo chown -R apache /var/www
+
+Grant group ownership of /var/www and its contents to the apache group.
+sudo chgrp -R apache /var/www
+
+Change the directory permissions of /var/www and its subdirectories to add group write permissions and to set the group ID on future subdirectories.
+sudo chmod 2775 /var/www
+find /var/www -type d -exec sudo chmod 2775 {} \;
+
+Recursively change the file permissions of /var/www and its subdirectories.
+find /var/www -type f -exec sudo chmod 0644 {} \;
+
+sudo systemctl restart httpd
 
 
 
