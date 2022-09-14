@@ -1,0 +1,39 @@
+1. Launch an EC2 instance with an extra volume having 10 gb size
+
+# make the data volume available for us
+
+1. Login to the instance and run the below command
+sudo lsblk -f
+
+2. To create a file system, run the below command
+sudo mkfs -t xfs /dev/nvme1n1
+
+3. To create a mount point directory for the data volume
+sudo mkdir /data
+
+4. To mount the data volume at the directory you just created
+sudo mount /dev/nvme1n1 /data
+
+5. To verify that you have formatted and mounted your data volume
+lsblk -f
+
+# Increase the size of the data volume
+
+1. First create the snapshot
+2. Modify the tutorials-volumes
+3. Changge the size to 16 gb
+
+# Extend the file system
+
+1. Connect to the instance
+2. df -hT  // you wil see the same old file size
+
+# run the below command to extend
+sudo xfs_growfs -d /data
+
+# use the below command to verify
+df -hT
+
+#Clean-up
+Delete a snapshot and Terminate an instance
+
