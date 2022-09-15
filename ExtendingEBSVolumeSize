@@ -17,6 +17,9 @@ sudo mount /dev/nvme1n1 /data
 5. To verify that you have formatted and mounted your data volume
 lsblk -f
 
+# Use the file -s command to get information about a specific device, such as its file system type. If the output shows simply data
+sudo file -s /dev/xvdf
+
 # Increase the size of the data volume
 
 1. First create the snapshot
