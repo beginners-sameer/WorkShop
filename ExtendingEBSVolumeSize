@@ -50,6 +50,8 @@ sudo vim /etc/fstab
 
 UUID=aebf131c-6957-451e-8d34-ec978d9581ae  /data  xfs  defaults,nofail  0  2
 
+We specify 0 to prevent the file system from being dumped, and we specify 2 to indicate that it is a non-root device.
+
 #Just unmount and mount it to verify
 sudo umount /data
 sudo mount -a
