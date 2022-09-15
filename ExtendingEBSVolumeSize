@@ -37,6 +37,31 @@ sudo xfs_growfs -d /data
 # use the below command to verify
 df -hT
 
+#Automatically mount an attached volume after reboot
+sudo cp /etc/fstab /etc/fstab.orig
+
+#get the UUID of the particular volume you want to..
+Example:
+[ec2-user@ip-10-0-3-1 ~]$ sudo blkid
+/dev/xvda1: LABEL="/" UUID="44322bfa-376f-498c-9617-cd51e46a67d5" TYPE="xfs" PARTLABEL="Linux" PARTUUID="20ef60b6-8b9d-4cd2-b2fa-324392c4a4ef"
+/dev/xvdb: UUID="cfb54a30-a749-4bb0-b05d-8c450c8f35a3" TYPE="xfs"
+
+sudo vim /etc/fstab
+
+UUID=aebf131c-6957-451e-8d34-ec978d9581ae  /data  xfs  defaults,nofail  0  2
+
+#Just unmount and mount it to verify
+sudo umount /data
+sudo mount -a
+
+#If you receive an error mesage, we have to troubleshoot.
+
+sudo mv /etc/fstab.orig /etc/fstab
+
+
+
+
+
 #Clean-up
 Delete a snapshot and Terminate an instance
 
