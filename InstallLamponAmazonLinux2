@@ -29,7 +29,10 @@ ___________________________________________________________
 Secure the database server:
 
 sudo systemctl start mariadb
+sudo systemctl enable mariadb
 sudo mysql_secure_installation
+Set root password
+rest all give Y
 
 
 
