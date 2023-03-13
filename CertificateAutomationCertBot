@@ -30,9 +30,18 @@ sudo yum install -y certbot python2-certbot-apache
 
 sudo certbot
 
+ENTER EMAIL ADDRESS
+yes
+
 ____________________
 
+qualys ssl labs
+
+Make sure 443 port is open
+
 How to Configure automatic certificate renewal
+
+sudo vi /etc/crontab
 
 Open the /etc/crontab file in a text editor, such as vim or nano, using sudo
 
