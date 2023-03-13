@@ -39,6 +39,8 @@ cp wordpress/wp-config-sample.php wordpress/wp-config.php
 
 sudo vi wordpress/wp-config.php
 
+add the db details
+
 _____________________________________________
 To install your WordPress files under the Apache document root
 
