@@ -6,6 +6,12 @@ sudo yum-config-manager --enable epel*
 
 sudo yum repolist all
 
+cd /etc/httpd/conf
+
+sudo vi httpd.conf
+
+After LISTEN 80, ADD THE BELOW LINES
+
 <VirtualHost *:80>
     DocumentRoot "/var/www/html"
     ServerName "ownlearning.click"
