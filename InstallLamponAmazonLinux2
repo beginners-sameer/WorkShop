@@ -21,6 +21,7 @@ Test your Lamp Server:
 echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
 
 cd /var/www/html
+publicip/phpinfo.php
 rm phpinfo.php
 
 ___________________________________________________________
